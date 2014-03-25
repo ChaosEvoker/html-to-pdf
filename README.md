@@ -28,7 +28,7 @@ You can use `convertHTMLFile` to convert HTML files to PDFs. Simply provide a pa
         }
     );
 
-### HTML String Conversion Examle ###
+### HTML String Conversion Example ###
 You can use `convertHTMLString` to turn a string of HTML into a PDF file. Simply pass in a string of HTML and a path to a destination PDF file for conversion. This is useful for using other templating languages (like Jade or Mustache) where you can convert the template into HTML and then use this to convert it to a PDF.
 
     var html = ...; //Some HTML String from code above
