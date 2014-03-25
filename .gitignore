@@ -4,3 +4,4 @@ test/testConvertFile.pdf
 test/testConvertString.pdf
 test/test.pdf
 node_modules/
+npm-debug.log
