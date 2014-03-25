@@ -1,0 +1,6 @@
+.DS_Store
+testApp.js
+test/testConvertFile.pdf
+test/testConvertString.pdf
+test/test.pdf
+node_modules/
