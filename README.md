@@ -15,40 +15,41 @@ To use html-to-pdf in your Node application, just require it:
 
 ### HTML File Conversion Example ###
 You can use `convertHTMLFile` to convert HTML files to PDFs. Simply provide a path to a source HTML file and a path to a destination PDF file for conversion.
-
-    htmlToPdf.convertHTMLFile('path/to/source.html', 'path/to/destination.pdf',
-        function (error, success) {
-           if (error) {
-                console.log('Oh noes! Errorz!');
-                console.log(error);
-            } else {
-                console.log('Woot! Success!');
-                console.log(success);
-            }
+```js
+htmlToPdf.convertHTMLFile('path/to/source.html', 'path/to/destination.pdf',
+    function (error, success) {
+       if (error) {
+            console.log('Oh noes! Errorz!');
+            console.log(error);
+        } else {
+            console.log('Woot! Success!');
+            console.log(success);
         }
-    );
-
+    }
+);
+```
 ### HTML String Conversion Example ###
 You can use `convertHTMLString` to turn a string of HTML into a PDF file. Simply pass in a string of HTML and a path to a destination PDF file for conversion. This is useful for using other templating languages (like Jade or Mustache) where you can convert the template into HTML and then use this to convert it to a PDF.
+```js
+var html = ...; //Some HTML String from code above
 
-    var html = ...; //Some HTML String from code above
-
-    htmlToPdf.convertHTMLString(html, 'path/to/destination.pdf', 
-        function (error, success) {
-            if (error) {
-                console.log('Oh noes! Errorz!');
-                console.log(error);
-            } else {
-                console.log('Woot! Success!');
-                console.log(success);
-            }
+htmlToPdf.convertHTMLString(html, 'path/to/destination.pdf', 
+    function (error, success) {
+        if (error) {
+            console.log('Oh noes! Errorz!');
+            console.log(error);
+        } else {
+            console.log('Woot! Success!');
+            console.log(success);
         }
-    );
-
+    }
+);
+```
 ### Debug Mode ###
 If you want to see the output you can set debug mode to true to see the output of the PDF Renderer (debug is false by default):
-
-`htmlToPdf.setDebug(true);`
+```js
+htmlToPdf.setDebug(true);
+```
 
 ## Heads Up ##
 html-to-pdf uses a Java process in the background. That means you will need Java installed to use it. Additionally, the Java process utilizes a library called flyingsaucer:
