@@ -13,8 +13,9 @@ To use html-to-pdf in your Node application, just require it:
 
 `var htmlToPdf = require('html-to-pdf');`
 
-### Basic Example ###
-    pdfConverter.convertHTMLFile('path/to/source.html', 'path/to/destination.pdf', 
+### HTML File Conversion Example ###
+You can use `convertHTMLFile` to convert HTML files to PDFs. Simply provide a path to a source HTML file and a path to a destination PDF file for conversion.
+    pdfConverter.convertHTMLFile('path/to/source.html', 'path/to/destination.pdf',
         function (error, success) {
            if (error) {
                 console.log('Oh noes! Errorz!');
@@ -25,3 +26,30 @@ To use html-to-pdf in your Node application, just require it:
             }
         }
     );
+
+### HTML String Conversion Examle ###
+You can use `convertHTMLString` to turn a string of HTML into a PDF file. Simply pass in a string of HTML and a path to a destination PDF file for conversion. This is useful for using other templating languages (like Jade or Mustache) where you can convert the template into HTML and then use this to convert it to a PDF.
+    var html = ...; //Some HTML String from code above
+
+    pdfConverter.convertHTMLString(html, 'test/testConvertString.pdf', function (error, success) {
+        if (error) {
+            console.log('Oh noes! Errorz!');
+            console.log(error);
+        } else {
+            console.log('Woot! Success!');
+            console.log(success);
+        }
+    });
+
+### Debug Mode ###
+If you want to see the output you can set debug mode to true to see the output of the PDF Renderer (debug is false by default):
+
+`pdfConverter.setDebug(true);`
+
+### Heads Up ###
+html-to-pdf uses a Java process in the background. That means you will need Java installed to use it. Additionally, the Java process utilizes a library called flyingsaucer:
+https://github.com/flyingsaucerproject/flyingsaucer
+Flyingsaucer has some contraints on CSS styling and so html-to-pdf does too by extension. Other than these two contraints, html-to-pdf is very lightweight and only uses code Node technologies.
+
+### Thanks ###
+If you decide to use html-to-pdf, thanks for the support! Let me know if you run into any issues or have any ideas!
