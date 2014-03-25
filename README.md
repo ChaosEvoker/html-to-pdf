@@ -11,7 +11,7 @@ npm install html-to-pdf
 ## How To Use html-to-pdf ##
 To use html-to-pdf in your Node application, just require it:
 ```js
-var htmlToPdf = require('html-to-pdf');`
+var htmlToPdf = require('html-to-pdf');
 ```
 ### HTML File Conversion Example ###
 You can use `convertHTMLFile` to convert HTML files to PDFs. Simply provide a path to a source HTML file and a path to a destination PDF file for conversion.
