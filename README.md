@@ -48,7 +48,7 @@ You can use `convertHTMLString` to turn a string of HTML into a PDF file. Simply
 ### Debug Mode ###
 If you want to see the output you can set debug mode to true to see the output of the PDF Renderer (debug is false by default):
 
-`pdfConverter.setDebug(true);`
+`htmlToPdf.setDebug(true);`
 
 ## Heads Up ##
 html-to-pdf uses a Java process in the background. That means you will need Java installed to use it. Additionally, the Java process utilizes a library called flyingsaucer:
