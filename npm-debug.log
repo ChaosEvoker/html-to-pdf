@@ -1,25 +1,196 @@
 0 info it worked if it ends with ok
 1 verbose cli [ 'node',
 1 verbose cli   '/Users/gsipe/.nvm/v0.10.22/bin/npm',
-1 verbose cli   'version',
-1 verbose cli   'patch' ]
+1 verbose cli   'publish',
+1 verbose cli   '-verbose' ]
 2 info using npm@1.4.6
 3 info using node@v0.10.22
-4 error Error: Git working directory not clean.
-4 error M README.md
-4 error     at /Users/gsipe/.nvm/v0.10.22/lib/node_modules/npm/lib/version.js:98:35
-4 error     at ChildProcess.exithandler (child_process.js:635:7)
-4 error     at ChildProcess.EventEmitter.emit (events.js:98:17)
-4 error     at maybeClose (child_process.js:735:16)
-4 error     at Socket.<anonymous> (child_process.js:948:11)
-4 error     at Socket.EventEmitter.emit (events.js:95:17)
-4 error     at Pipe.close (net.js:466:12)
-5 error If you need help, you may report this *entire* log,
-5 error including the npm and node versions, at:
-5 error     <http://github.com/npm/npm/issues>
-6 error System Darwin 13.0.0
-7 error command "node" "/Users/gsipe/.nvm/v0.10.22/bin/npm" "version" "patch"
-8 error cwd /Users/gsipe/Github/html-to-pdf
-9 error node -v v0.10.22
-10 error npm -v 1.4.6
-11 verbose exit [ 1, true ]
+4 verbose publish [ '.' ]
+5 verbose cache add [ '.', null ]
+6 verbose cache add name=undefined spec="." args=[".",null]
+7 verbose parsed url { protocol: null,
+7 verbose parsed url   slashes: null,
+7 verbose parsed url   auth: null,
+7 verbose parsed url   host: null,
+7 verbose parsed url   port: null,
+7 verbose parsed url   hostname: null,
+7 verbose parsed url   hash: null,
+7 verbose parsed url   search: null,
+7 verbose parsed url   query: null,
+7 verbose parsed url   pathname: '.',
+7 verbose parsed url   path: '.',
+7 verbose parsed url   href: '.' }
+8 silly lockFile 3a52ce78- .
+9 verbose lock . /Users/gsipe/.npm/3a52ce78-.lock
+10 verbose tar pack [ '/var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/tmp.tgz',
+10 verbose tar pack   '.' ]
+11 verbose tarball /var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/tmp.tgz
+12 verbose folder .
+13 info prepublish html-to-pdf@0.1.5
+14 silly lockFile 1f1177db-tar tar://.
+15 verbose lock tar://. /Users/gsipe/.npm/1f1177db-tar.lock
+16 silly lockFile 6f78f680-54902-0-2700789636000991-tmp-tgz tar:///var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/tmp.tgz
+17 verbose lock tar:///var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/tmp.tgz /Users/gsipe/.npm/6f78f680-54902-0-2700789636000991-tmp-tgz.lock
+18 silly lockFile 1f1177db-tar tar://.
+19 silly lockFile 1f1177db-tar tar://.
+20 silly lockFile 6f78f680-54902-0-2700789636000991-tmp-tgz tar:///var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/tmp.tgz
+21 silly lockFile 6f78f680-54902-0-2700789636000991-tmp-tgz tar:///var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/tmp.tgz
+22 verbose tar unpack /var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/tmp.tgz
+23 silly lockFile cb00691c-54902-0-2700789636000991-package tar:///var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/package
+24 verbose lock tar:///var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/package /Users/gsipe/.npm/cb00691c-54902-0-2700789636000991-package.lock
+25 silly lockFile 6f78f680-54902-0-2700789636000991-tmp-tgz tar:///var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/tmp.tgz
+26 verbose lock tar:///var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/tmp.tgz /Users/gsipe/.npm/6f78f680-54902-0-2700789636000991-tmp-tgz.lock
+27 silly gunzTarPerm modes [ '755', '644' ]
+28 silly gunzTarPerm extractEntry package.json
+29 silly gunzTarPerm extractEntry .npmignore
+30 silly gunzTarPerm extractEntry README.md
+31 silly gunzTarPerm extractEntry LICENSE
+32 silly gunzTarPerm extractEntry html-to-pdf.js
+33 silly gunzTarPerm extractEntry PDFRenderer.jar
+34 silly gunzTarPerm extractEntry java-src/bin/PDFRenderer.class
+35 silly gunzTarPerm extractEntry java-src/lib/core-renderer-R8pre2.jar
+36 silly gunzTarPerm extractEntry java-src/lib/itext-paulo-155.jar
+37 silly gunzTarPerm extractEntry java-src/lib/jtidy-r938.jar
+38 silly gunzTarPerm extractEntry java-src/src/PDFRenderer.java
+39 silly gunzTarPerm extractEntry test/cat.jpg
+40 silly gunzTarPerm extractEntry test/test.html
+41 silly lockFile cb00691c-54902-0-2700789636000991-package tar:///var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/package
+42 silly lockFile cb00691c-54902-0-2700789636000991-package tar:///var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/package
+43 silly lockFile 6f78f680-54902-0-2700789636000991-tmp-tgz tar:///var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/tmp.tgz
+44 silly lockFile 6f78f680-54902-0-2700789636000991-tmp-tgz tar:///var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/tmp.tgz
+45 verbose tar pack [ '/Users/gsipe/.npm/html-to-pdf/0.1.5/package.tgz',
+45 verbose tar pack   '/var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/package' ]
+46 verbose tarball /Users/gsipe/.npm/html-to-pdf/0.1.5/package.tgz
+47 verbose folder /var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/package
+48 silly lockFile cb00691c-54902-0-2700789636000991-package tar:///var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/package
+49 verbose lock tar:///var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/package /Users/gsipe/.npm/cb00691c-54902-0-2700789636000991-package.lock
+50 silly lockFile 9a98bee3-pm-html-to-pdf-0-1-5-package-tgz tar:///Users/gsipe/.npm/html-to-pdf/0.1.5/package.tgz
+51 verbose lock tar:///Users/gsipe/.npm/html-to-pdf/0.1.5/package.tgz /Users/gsipe/.npm/9a98bee3-pm-html-to-pdf-0-1-5-package-tgz.lock
+52 silly lockFile cb00691c-54902-0-2700789636000991-package tar:///var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/package
+53 silly lockFile cb00691c-54902-0-2700789636000991-package tar:///var/folders/3j/dk85_x2s29b0t4fy745s77hhf5p90n/T/npm-9702-PglEPuOd/1395773954902-0.2700789636000991/package
+54 silly lockFile 9a98bee3-pm-html-to-pdf-0-1-5-package-tgz tar:///Users/gsipe/.npm/html-to-pdf/0.1.5/package.tgz
+55 silly lockFile 9a98bee3-pm-html-to-pdf-0-1-5-package-tgz tar:///Users/gsipe/.npm/html-to-pdf/0.1.5/package.tgz
+56 silly lockFile dd12fca5-pe-npm-html-to-pdf-0-1-5-package /Users/gsipe/.npm/html-to-pdf/0.1.5/package
+57 verbose lock /Users/gsipe/.npm/html-to-pdf/0.1.5/package /Users/gsipe/.npm/dd12fca5-pe-npm-html-to-pdf-0-1-5-package.lock
+58 silly lockFile dd12fca5-pe-npm-html-to-pdf-0-1-5-package /Users/gsipe/.npm/html-to-pdf/0.1.5/package
+59 silly lockFile dd12fca5-pe-npm-html-to-pdf-0-1-5-package /Users/gsipe/.npm/html-to-pdf/0.1.5/package
+60 verbose tar unpack /Users/gsipe/.npm/html-to-pdf/0.1.5/package.tgz
+61 silly lockFile b7573c28-pe-npm-html-to-pdf-0-1-5-package tar:///Users/gsipe/.npm/html-to-pdf/0.1.5/package
+62 verbose lock tar:///Users/gsipe/.npm/html-to-pdf/0.1.5/package /Users/gsipe/.npm/b7573c28-pe-npm-html-to-pdf-0-1-5-package.lock
+63 silly lockFile 9a98bee3-pm-html-to-pdf-0-1-5-package-tgz tar:///Users/gsipe/.npm/html-to-pdf/0.1.5/package.tgz
+64 verbose lock tar:///Users/gsipe/.npm/html-to-pdf/0.1.5/package.tgz /Users/gsipe/.npm/9a98bee3-pm-html-to-pdf-0-1-5-package-tgz.lock
+65 silly gunzTarPerm modes [ '755', '644' ]
+66 silly gunzTarPerm extractEntry package.json
+67 silly gunzTarPerm extractEntry .npmignore
+68 silly gunzTarPerm extractEntry README.md
+69 silly gunzTarPerm extractEntry LICENSE
+70 silly gunzTarPerm extractEntry html-to-pdf.js
+71 silly gunzTarPerm extractEntry PDFRenderer.jar
+72 silly gunzTarPerm extractEntry java-src/bin/PDFRenderer.class
+73 silly gunzTarPerm extractEntry java-src/lib/core-renderer-R8pre2.jar
+74 silly gunzTarPerm extractEntry java-src/lib/itext-paulo-155.jar
+75 silly gunzTarPerm extractEntry java-src/lib/jtidy-r938.jar
+76 silly gunzTarPerm extractEntry java-src/src/PDFRenderer.java
+77 silly gunzTarPerm extractEntry test/cat.jpg
+78 silly gunzTarPerm extractEntry test/test.html
+79 silly lockFile b7573c28-pe-npm-html-to-pdf-0-1-5-package tar:///Users/gsipe/.npm/html-to-pdf/0.1.5/package
+80 silly lockFile b7573c28-pe-npm-html-to-pdf-0-1-5-package tar:///Users/gsipe/.npm/html-to-pdf/0.1.5/package
+81 silly lockFile 9a98bee3-pm-html-to-pdf-0-1-5-package-tgz tar:///Users/gsipe/.npm/html-to-pdf/0.1.5/package.tgz
+82 silly lockFile 9a98bee3-pm-html-to-pdf-0-1-5-package-tgz tar:///Users/gsipe/.npm/html-to-pdf/0.1.5/package.tgz
+83 verbose chmod /Users/gsipe/.npm/html-to-pdf/0.1.5/package.tgz 644
+84 verbose chown /Users/gsipe/.npm/html-to-pdf/0.1.5/package.tgz [ 475735061, 37678515 ]
+85 silly lockFile 3a52ce78- .
+86 silly lockFile 3a52ce78- .
+87 silly publish { name: 'html-to-pdf',
+87 silly publish   version: '0.1.5',
+87 silly publish   description: 'A Node HTML to PDF converter using a the Java flyingsaucer library.',
+87 silly publish   main: 'html-to-pdf.js',
+87 silly publish   directories: { test: 'test', 'java-src': 'java-src' },
+87 silly publish   scripts: { test: 'echo "Error: no test specified" && exit 1' },
+87 silly publish   repository:
+87 silly publish    { type: 'git',
+87 silly publish      url: 'https://github.com/ChaosEvoker/html-to-pdf.git' },
+87 silly publish   keywords:
+87 silly publish    [ 'node',
+87 silly publish      'pdf',
+87 silly publish      'html',
+87 silly publish      'converter',
+87 silly publish      'renderer',
+87 silly publish      'java',
+87 silly publish      'javascript' ],
+87 silly publish   author: { name: 'Phillip Sipe' },
+87 silly publish   license: 'MIT',
+87 silly publish   bugs: { url: 'https://github.com/ChaosEvoker/html-to-pdf/issues' },
+87 silly publish   homepage: 'https://github.com/ChaosEvoker/html-to-pdf',
+87 silly publish   readme: 'html-to-pdf\n===========\n\nA Node wrapper around a Java HTML to PDF converter to allow users to make HTML templates for automated generation of PDFs. While often in Node this is achieved through phantomjs, for larger PDF reports each report being a large image can make the file very large very quickly. This aims to fix that problem by using the Java library flyingsaucer to do the heavy lifting and providing a Node wrapper around it for ease of use with web applications.\n\n## Installation ##\nTo install html-to-pdf simply use NPM:\n`npm install html-to-pdf`\n',
+87 silly publish   readmeFilename: 'README.md',
+87 silly publish   _id: 'html-to-pdf@0.1.5',
+87 silly publish   dist: { shasum: 'fc122d2bf1734bae466e88429b55f0a0d6758849' },
+87 silly publish   _from: '.' }
+88 verbose url raw html-to-pdf
+89 verbose url resolving [ 'https://registry.npmjs.org/', './html-to-pdf' ]
+90 verbose url resolved https://registry.npmjs.org/html-to-pdf
+91 info trying registry request attempt 1 at 13:59:17
+92 http PUT https://registry.npmjs.org/html-to-pdf
+93 http 503 https://registry.npmjs.org/html-to-pdf
+94 verbose bad json <?xml version="1.0" encoding="utf-8"?>
+94 verbose bad json <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+94 verbose bad json  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+94 verbose bad json <html>
+94 verbose bad json   <head>
+94 verbose bad json     <title>503 backend read error</title>
+94 verbose bad json   </head>
+94 verbose bad json   <body>
+94 verbose bad json     <h1>Error 503 backend read error</h1>
+94 verbose bad json     <p>backend read error</p>
+94 verbose bad json     <h3>Guru Meditation:</h3>
+94 verbose bad json     <p>XID: 3940358958</p>
+94 verbose bad json     <hr>
+94 verbose bad json     <p>Varnish cache server</p>
+94 verbose bad json   </body>
+94 verbose bad json </html>
+95 error registry error parsing json
+96 info retry will retry, error on last attempt: SyntaxError: Unexpected token <
+96 info retry
+96 info retry <?xml version="1.0" encoding="utf-8"?>
+96 info retry <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+96 info retry  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+96 info retry <html>
+96 info retry   <head>
+96 info retry     <title>503 backend read error</title>
+96 info retry   </head>
+96 info retry   <body>
+96 info retry     <h1>Error 503 backend read error</h1>
+96 info retry     <p>backend read error</p>
+96 info retry     <h3>Guru Meditation:</h3>
+96 info retry     <p>XID: 3940358958</p>
+96 info retry     <hr>
+96 info retry     <p>Varnish cache server</p>
+96 info retry   </body>
+96 info retry </html>
+97 info trying registry request attempt 2 at 13:59:59
+98 http PUT https://registry.npmjs.org/html-to-pdf
+99 http 403 https://registry.npmjs.org/html-to-pdf
+100 error publish Failed PUT 403
+101 error Error: forbidden cannot modify pre-existing version: 0.1.5
+101 error old={"name":"html-to-pdf","version":"0.1.5","description":"A Node HTML to PDF converter using a the Java flyingsaucer library.","main":"html-to-pdf.js","directories":{"test":"test","java-src":"java-src"},"scripts":{"test":"echo \"Error: no test specified\" && exit 1"},"repository":{"type":"git","url":"https://github.com/ChaosEvoker/html-to-pdf.git"},"keywords":["node","pdf","html","converter","renderer","java","javascript"],"author":{"name":"Phillip Sipe"},"license":"MIT","bugs":{"url":"https://github.com/ChaosEvoker/html-to-pdf/issues"},"homepage":"https://github.com/ChaosEvoker/html-to-pdf","_id":"html-to-pdf@0.1.5","dist":{"shasum":"fc122d2bf1734bae466e88429b55f0a0d6758849","tarball":"http://registry.npmjs.org/html-to-pdf/-/html-to-pdf-0.1.5.tgz"},"_from":".","_npmVersion":"1.4.6","_npmUser":{"name":"chaosevoker","email":"chaosevoker@gmail.com"},"maintainers":[{"name":"chaosevoker","email":"chaosevoker@gmail.com"}]}
+101 error new={"name":"html-to-pdf","version":"0.1.5","description":"A Node HTML to PDF converter using a the Java flyingsaucer library.","main":"html-to-pdf.js","directories":{"test":"test","java-src":"java-src"},"scripts":{"test":"echo \"Error: no test specified\" && exit 1"},"repository":{"type":"git","url":"https://github.com/ChaosEvoker/html-to-pdf.git"},"keywords":["node","pdf","html","converter","renderer","java","javascript"],"author":{"name":"Phillip Sipe"},"license":"MIT","bugs":{"url":"https://github.com/ChaosEvoker/html-to-pdf/issues"},"homepage":"https://github.com/ChaosEvoker/html-to-pdf","readme":"html-to-pdf\u000a===========\u000a\u000aA Node wrapper around a Java HTML to PDF converter to allow users to make HTML templates for automated generation of PDFs. While often in Node this is achieved through phantomjs, for larger PDF reports each report being a large image can make the file very large very quickly. This aims to fix that problem by using the Java library flyingsaucer to do the heavy lifting and providing a Node wrapper around it for ease of use with web applications.\u000a\u000a## Installation ##\u000aTo install html-to-pdf simply use NPM:\u000a`npm install html-to-pdf`\u000a","readmeFilename":"README.md","_id":"html-to-pdf@0.1.5","dist":{"shasum":"fc122d2bf1734bae466e88429b55f0a0d6758849","tarball":"http://registry.npmjs.org/html-to-pdf/-/html-to-pdf-0.1.5.tgz"},"_from":".","_npmVersion":"1.4.6","_npmUser":{"name":"chaosevoker","email":"chaosevoker@gmail.com"},"maintainers":[{"name":"chaosevoker","email":"chaosevoker@gmail.com"}]}: html-to-pdf
+101 error     at RegClient.<anonymous> (/Users/gsipe/.nvm/v0.10.22/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:254:14)
+101 error     at Request._callback (/Users/gsipe/.nvm/v0.10.22/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:192:65)
+101 error     at Request.self.callback (/Users/gsipe/.nvm/v0.10.22/lib/node_modules/npm/node_modules/request/request.js:123:22)
+101 error     at Request.EventEmitter.emit (events.js:98:17)
+101 error     at Request.<anonymous> (/Users/gsipe/.nvm/v0.10.22/lib/node_modules/npm/node_modules/request/request.js:893:14)
+101 error     at Request.EventEmitter.emit (events.js:117:20)
+101 error     at IncomingMessage.<anonymous> (/Users/gsipe/.nvm/v0.10.22/lib/node_modules/npm/node_modules/request/request.js:844:12)
+101 error     at IncomingMessage.EventEmitter.emit (events.js:117:20)
+101 error     at _stream_readable.js:920:16
+101 error     at process._tickCallback (node.js:415:13)
+102 error If you need help, you may report this *entire* log,
+102 error including the npm and node versions, at:
+102 error     <http://github.com/npm/npm/issues>
+103 error System Darwin 13.0.0
+104 error command "node" "/Users/gsipe/.nvm/v0.10.22/bin/npm" "publish" "-verbose"
+105 error cwd /Users/gsipe/Github/html-to-pdf
+106 error node -v v0.10.22
+107 error npm -v 1.4.6
+108 verbose exit [ 1, true ]
