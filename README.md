@@ -5,4 +5,23 @@ A Node wrapper around a Java HTML to PDF converter to allow users to make HTML t
 
 ## Installation ##
 To install html-to-pdf simply use NPM:
+
 `npm install html-to-pdf`
+
+## How To Use html-to-pdf ##
+To use html-to-pdf in your Node application, just require it:
+
+`var htmlToPdf = require('html-to-pdf');`
+
+### Basic Example ###
+`
+pdfConverter.convertHTMLFile('test/test.html', 'test/testConvertFile.pdf', function (error, success) {
+    if (error) {
+        console.log('Oh noes! Errorz!');
+        console.log(error);
+    } else {
+        console.log('Woot! Success!');
+        console.log(success);
+    }
+});
+`
