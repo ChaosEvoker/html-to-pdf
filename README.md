@@ -15,6 +15,7 @@ To use html-to-pdf in your Node application, just require it:
 
 ### HTML File Conversion Example ###
 You can use `convertHTMLFile` to convert HTML files to PDFs. Simply provide a path to a source HTML file and a path to a destination PDF file for conversion.
+
     pdfConverter.convertHTMLFile('path/to/source.html', 'path/to/destination.pdf',
         function (error, success) {
            if (error) {
@@ -29,6 +30,7 @@ You can use `convertHTMLFile` to convert HTML files to PDFs. Simply provide a pa
 
 ### HTML String Conversion Examle ###
 You can use `convertHTMLString` to turn a string of HTML into a PDF file. Simply pass in a string of HTML and a path to a destination PDF file for conversion. This is useful for using other templating languages (like Jade or Mustache) where you can convert the template into HTML and then use this to convert it to a PDF.
+
     var html = ...; //Some HTML String from code above
 
     pdfConverter.convertHTMLString(html, 'test/testConvertString.pdf', function (error, success) {
