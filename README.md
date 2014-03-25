@@ -16,7 +16,7 @@ To use html-to-pdf in your Node application, just require it:
 ### HTML File Conversion Example ###
 You can use `convertHTMLFile` to convert HTML files to PDFs. Simply provide a path to a source HTML file and a path to a destination PDF file for conversion.
 
-    pdfConverter.convertHTMLFile('path/to/source.html', 'path/to/destination.pdf',
+    htmlToPdf.convertHTMLFile('path/to/source.html', 'path/to/destination.pdf',
         function (error, success) {
            if (error) {
                 console.log('Oh noes! Errorz!');
@@ -33,15 +33,17 @@ You can use `convertHTMLString` to turn a string of HTML into a PDF file. Simply
 
     var html = ...; //Some HTML String from code above
 
-    pdfConverter.convertHTMLString(html, 'test/testConvertString.pdf', function (error, success) {
-        if (error) {
-            console.log('Oh noes! Errorz!');
-            console.log(error);
-        } else {
-            console.log('Woot! Success!');
-            console.log(success);
+    htmlToPdf.convertHTMLString(html, 'path/to/destination.pdf', 
+        function (error, success) {
+            if (error) {
+                console.log('Oh noes! Errorz!');
+                console.log(error);
+            } else {
+                console.log('Woot! Success!');
+                console.log(success);
+            }
         }
-    });
+    );
 
 ### Debug Mode ###
 If you want to see the output you can set debug mode to true to see the output of the PDF Renderer (debug is false by default):
