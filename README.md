@@ -50,8 +50,10 @@ If you want to see the output you can set debug mode to true to see the output o
 
 ## Heads Up ##
 html-to-pdf uses a Java process in the background. That means you will need Java installed to use it. Additionally, the Java process utilizes a library called flyingsaucer:
+
 https://github.com/flyingsaucerproject/flyingsaucer
-Flyingsaucer has some contraints on CSS styling and so html-to-pdf does too by extension. Other than these two contraints, html-to-pdf is very lightweight and only uses code Node technologies.
+
+Flyingsaucer has some contraints on CSS styling and some extra styling features to define PDF parameters. html-to-pdf also uses these features by extension. Other than these two contraints, html-to-pdf is very lightweight and only uses code Node technologies.
 
 ## Thanks ##
 If you decide to use html-to-pdf, thanks for the support! Let me know if you run into any issues or have any ideas!

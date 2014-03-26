@@ -11,7 +11,7 @@ exports.convertHTMLString = function (html, pdfPath, callback) {
         if (err) {
             callback(err)
         } else {
-            var renderer = child_process.spawn('java', ['-jar', 'PDFRenderer.jar', 'temp.html', pdfPath]);
+            var renderer = child_process.spawn('java', ['-jar', __dirname + '/PDFRenderer.jar', 'temp.html', pdfPath]);
             renderer.on('error', function (error) {
                 callback(error);
             });
@@ -37,7 +37,7 @@ exports.convertHTMLString = function (html, pdfPath, callback) {
 };
 
 exports.convertHTMLFile = function (htmlPath, pdfPath, callback) {
-    var renderer = child_process.spawn('java', ['-jar', 'PDFRenderer.jar', htmlPath, pdfPath]);
+    var renderer = child_process.spawn('java', ['-jar', __dirname + '/PDFRenderer.jar', htmlPath, pdfPath]);
         renderer.on('error', function (error) {
             callback(error);
         });

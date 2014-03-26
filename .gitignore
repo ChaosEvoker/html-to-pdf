@@ -3,5 +3,6 @@ testApp.js
 test/testConvertFile.pdf
 test/testConvertString.pdf
 test/test.pdf
+test/testDir.js
 node_modules/
 npm-debug.log
