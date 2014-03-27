@@ -7,28 +7,17 @@ exports.setDebug = function (newDebug) {
 };
 
 exports.convertHTMLString = function (html, pdfPath, callback) {
+    var self = this;
     fs.writeFile('temp.html', html, function (err) {
         if (err) {
             callback(err)
         } else {
-            var renderer = child_process.spawn('java', ['-jar', __dirname + '/PDFRenderer.jar', 'temp.html', pdfPath]);
-            renderer.on('error', function (error) {
-                callback(error);
-            });
-            if (debug) {
-                renderer.stdout.on('data', function (data) {
-                    console.log('STDOUT: ' + data);
-                });
-                renderer.stderr.on('data', function (data) {
-                    console.log('STDERR: ' + data);
-                });
-            }
-            renderer.on('exit', function (code) {
+            self.convertHTMLFile('temp.html', pdfPath, function (error, results) {
                 fs.unlink('temp.html', function (deleteError) {
                     if (deleteError) {
                         callback(deleteError);
                     } else {
-                        callback(null, {process_code: code});
+                        callback(null, results);
                     }
                 });
             });
