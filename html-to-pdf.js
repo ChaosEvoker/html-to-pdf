@@ -44,7 +44,6 @@ exports.convertHTMLFile = function (htmlPath, pdfPath, callback) {
         args.push('--output-encoding', outputEncoding);
     }
     args.push(htmlPath, pdfPath);
-    console.log(args);
     var renderer = child_process.spawn('java', args);
         renderer.on('error', function (error) {
             callback(error);
