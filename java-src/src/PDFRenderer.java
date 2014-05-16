@@ -3,9 +3,22 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.net.URL;
+import java.net.URLStreamHandlerFactory;
+import java.net.URLStreamHandler;
 
 import org.w3c.tidy.Tidy;
 import org.xhtmlrenderer.pdf.ITextRenderer;
+import org.xhtmlrenderer.protocols.data.Handler;
+
+class DataURLStreamHandlerFactory implements URLStreamHandlerFactory {
+    public URLStreamHandler createURLStreamHandler(String protocol) {
+        if (protocol.equalsIgnoreCase("data"))
+            return new Handler();
+        else
+            return null;
+    }
+}
 
 public class PDFRenderer {
 
@@ -16,13 +29,7 @@ public class PDFRenderer {
     		throw new Exception("Invalid arguments. Renderer requires a path to an HTML File (source) and a path to a PDF File (destination).");
     	}
 
-        String oldProperty = System.getProperty("java.protocol.handler.pkgs");
-        if (oldProperty == null)
-        {
-            System.setProperty("java.protocol.handler.pkgs", "org.xhtmlrenderer.protocols");
-        } else if (!oldProperty.contains("org.xhtmlrenderer.protocols")) {
-            System.setProperty("java.protocol.handler.pkgs", oldProperty + "|org.xhtmlrenderer.protocols");
-        }
+        URL.setURLStreamHandlerFactory(new DataURLStreamHandlerFactory());
 
     	//Set up command line arguments
         int filesArgIndex = 0;
