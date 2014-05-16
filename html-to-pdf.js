@@ -1,10 +1,20 @@
 var child_process = require('child_process'),
     fs = require('fs'),
-    debug = false;
+    debug = false,
+    inputEncoding = null,
+    outputEncoding = null;
 
 exports.setDebug = function (newDebug) {
     debug = newDebug;
 };
+
+exports.setInputEncoding = function(enc) {
+    inputEncoding = enc;
+}
+
+exports.setOutputEncoding = function(enc) {
+    outputEncoding = enc;
+}
 
 exports.convertHTMLString = function (html, pdfPath, callback) {
     var self = this;
@@ -26,7 +36,16 @@ exports.convertHTMLString = function (html, pdfPath, callback) {
 };
 
 exports.convertHTMLFile = function (htmlPath, pdfPath, callback) {
-    var renderer = child_process.spawn('java', ['-jar', __dirname + '/PDFRenderer.jar', htmlPath, pdfPath]);
+    var args = ['-jar', __dirname + '/PDFRenderer.jar'];
+    if (inputEncoding !== null) {
+        args.push('--input-encoding', inputEncoding);
+    }
+    if (outputEncoding !== null) {
+        args.push('--output-encoding', outputEncoding);
+    }
+    args.push(htmlPath, pdfPath);
+    console.log(args);
+    var renderer = child_process.spawn('java', args);
         renderer.on('error', function (error) {
             callback(error);
         });

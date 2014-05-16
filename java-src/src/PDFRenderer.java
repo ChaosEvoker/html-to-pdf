@@ -16,9 +16,35 @@ public class PDFRenderer {
     		throw new Exception("Invalid arguments. Renderer requires a path to an HTML File (source) and a path to a PDF File (destination).");
     	}
 
+        String oldProperty = System.getProperty("java.protocol.handler.pkgs");
+        if (oldProperty == null)
+        {
+            System.setProperty("java.protocol.handler.pkgs", "org.xhtmlrenderer.protocols");
+        } else if (!oldProperty.contains("org.xhtmlrenderer.protocols")) {
+            System.setProperty("java.protocol.handler.pkgs", oldProperty + "|org.xhtmlrenderer.protocols");
+        }
+
     	//Set up command line arguments
-		String inputFile = args[0];
-    	String pdfFilePath = args[1];
+        int filesArgIndex = 0;
+        String inputEncoding = "";
+        String outputEncoding = "";
+        for (int i = 0; i < args.length; i++)
+        {
+            if (args[i].equals("--input-encoding") && (i < args.length - 1))
+            {
+                inputEncoding = args[i + 1];
+                i++;
+                filesArgIndex += 2;
+            }
+            if (args[i].equals("--output-encoding") && (i < args.length - 1))
+            {
+                outputEncoding = args[i + 1];
+                i++;
+                filesArgIndex += 2;
+            }
+        }
+		String inputFile = args[filesArgIndex];
+    	String pdfFilePath = args[filesArgIndex + 1];
 
     	//Set up input file and output file for cleaning up the HTML
         InputStream is = new FileInputStream(inputFile);
@@ -29,6 +55,10 @@ public class PDFRenderer {
         //This is necessary because for flyingsaucer to render the PDF, it
     	//requires well-formatted XHTML or XML (XHTML in our case)
     	Tidy htmlCleaner = new Tidy();
+        if (!inputEncoding.isEmpty())
+            htmlCleaner.setInputEncoding(inputEncoding);
+        if (!outputEncoding.isEmpty())
+            htmlCleaner.setOutputEncoding(outputEncoding);
     	htmlCleaner.setXHTML(true);
     	htmlCleaner.parse(is, os);
 
