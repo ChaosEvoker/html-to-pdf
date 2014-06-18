@@ -33,7 +33,7 @@ You can use `convertHTMLString` to turn a string of HTML into a PDF file. Simply
 ```js
 var html = ...; //Some HTML String from code above
 
-htmlToPdf.convertHTMLString(html, 'path/to/destination.pdf', 
+htmlToPdf.convertHTMLString(html, 'path/to/destination.pdf',
     function (error, success) {
         if (error) {
             console.log('Oh noes! Errorz!');
@@ -51,12 +51,20 @@ If you want to see the output you can set debug mode to true to see the output o
 htmlToPdf.setDebug(true);
 ```
 
+### Encoding Settings ###
+If using a particular encoding type is important to getting the output you want, you can set the encoding types for both the input and output:
+```js
+htmlToPdf.setInputEncoding('UTF-8');
+htmlToPdf.setOutputEncoding('UTF-8');
+```
+Thanks to bplaa-yai for this feature!
+
 ## Heads Up ##
 html-to-pdf uses a Java process in the background. That means you will need Java installed to use it. Additionally, the Java process utilizes a library called flyingsaucer:
 
 https://github.com/flyingsaucerproject/flyingsaucer
 
-Flyingsaucer has some contraints on CSS styling and some extra styling features to define PDF parameters. html-to-pdf also uses these features by extension. Other than these two contraints, html-to-pdf is very lightweight and only uses code Node technologies.
+Flyingsaucer has some contraints on CSS styling and some extra styling features to define PDF parameters. html-to-pdf also uses these features by extension. Other than these two contraints, html-to-pdf is very lightweight and only uses core Node technologies.
 
 ## Thanks ##
 If you decide to use html-to-pdf, thanks for the support! Let me know if you run into any issues or have any ideas!
