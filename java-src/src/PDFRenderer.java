@@ -28,8 +28,11 @@ public class PDFRenderer {
     	if (args.length < 2) {
     		throw new Exception("Invalid arguments. Renderer requires a path to an HTML File (source) and a path to a PDF File (destination).");
     	}
-
-        URL.setURLStreamHandlerFactory(new DataURLStreamHandlerFactory());
+        try {
+            URL.setURLStreamHandlerFactory(new DataURLStreamHandlerFactory());
+        } catch (Error e) {
+            System.out.println("The Stream Handler Factory is already defined. Moving on to convert to PDF.");
+        }
 
     	//Set up command line arguments
         int filesArgIndex = 0;
