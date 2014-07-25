@@ -1,6 +1,6 @@
 {
   "name": "html-to-pdf",
-  "version": "0.1.8",
+  "version": "0.2.0",
   "description": "A Node HTML to PDF converter using a the Java flyingsaucer library.",
   "main": "html-to-pdf.js",
   "directories": {
