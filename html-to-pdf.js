@@ -23,13 +23,17 @@ exports.convertHTMLString = function (html, pdfPath, callback) {
             callback(err)
         } else {
             self.convertHTMLFile('temp.html', pdfPath, function (error, results) {
-                fs.unlink('temp.html', function (deleteError) {
-                    if (deleteError) {
-                        callback(deleteError);
-                    } else {
-                        callback(null, results);
-                    }
-                });
+                if (error) {
+                    callback(error);
+                } else {
+                    fs.unlink('temp.html', function (deleteError) {
+                        if (deleteError) {
+                            callback(deleteError);
+                        } else {
+                            callback(null, results);
+                        }
+                    });
+                }
             });
         }
     });
@@ -45,18 +49,18 @@ exports.convertHTMLFile = function (htmlPath, pdfPath, callback) {
     }
     args.push(htmlPath, pdfPath);
     var renderer = child_process.spawn('java', args);
-        renderer.on('error', function (error) {
-            callback(error);
+    renderer.on('error', function (error) {
+        callback(error);
+    });
+    if (debug) {
+        renderer.stdout.on('data', function (data) {
+            console.log('STDOUT: ' + data);
         });
-        if (debug) {
-            renderer.stdout.on('data', function (data) {
-                console.log('STDOUT: ' + data);
-            });
-            renderer.stderr.on('data', function (data) {
-                console.log('STDERR: ' + data);
-            });
-        }
-        renderer.on('exit', function (code) {
-            callback(null, {process_code: code});
+        renderer.stderr.on('data', function (data) {
+            console.log('STDERR: ' + data);
         });
+    }
+    renderer.on('exit', function (code) {
+        callback(null, {process_code: code});
+    });
 };
