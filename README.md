@@ -64,9 +64,9 @@ html-to-pdf uses a Java process in the background. That means you will need Java
 
 https://github.com/flyingsaucerproject/flyingsaucer
 
-Flyingsaucer has some contraints on CSS styling and some extra styling features to define PDF parameters. html-to-pdf also uses these features by extension. Other than these two contraints, html-to-pdf is very lightweight and only uses core Node technologies.
+Flyingsaucer has some contraints on CSS styling and some extra styling features to define PDF parameters. html-to-pdf also uses these features by extension. Other than these two contraints, html-to-pdf is very lightweight.
 
-Also, html-to-pdf creates a temporary file while converting. While it will clean up after itself, this file creation/deletion can trigger things like [forever](https://github.com/nodejitsu/forever) to restart the server. Adding the temp file to the ignore list should prevent this from happening. 
+Also, html-to-pdf creates a temporary file while converting. While it will clean up after itself, this file creation/deletion can trigger things like [forever](https://github.com/nodejitsu/forever) to restart the server. Adding the temp file to the ignore list should prevent this from happening.
 
 ## Thanks ##
 If you decide to use html-to-pdf, thanks for the support! Let me know if you run into any issues or have any ideas!

@@ -7,6 +7,8 @@ import java.net.URL;
 import java.net.URLStreamHandlerFactory;
 import java.net.URLStreamHandler;
 
+import java.util.UUID;
+
 import org.w3c.tidy.Tidy;
 import org.xhtmlrenderer.pdf.ITextRenderer;
 import org.xhtmlrenderer.protocols.data.Handler;
@@ -58,7 +60,8 @@ public class PDFRenderer {
 
     	//Set up input file and output file for cleaning up the HTML
         InputStream is = new FileInputStream(inputFile);
-        String cleanHTMLFile = "clean.html";
+        UUID uniqueID = UUID.randomUUID();
+        String cleanHTMLFile = uniqueID.toString() + ".html";
         OutputStream os = new FileOutputStream(cleanHTMLFile);
 
         //Clean the HTML
@@ -89,7 +92,7 @@ public class PDFRenderer {
         outputPDF.close();
 
 		//Clean up the temp file
-		File tempFile = new File("clean.html");
+		File tempFile = new File(uniqueID.toString() + ".html");
 		tempFile.delete();
     }
 

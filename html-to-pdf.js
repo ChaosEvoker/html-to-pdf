@@ -1,5 +1,6 @@
 var child_process = require('child_process'),
     fs = require('fs'),
+    UUIDGenerator = require('node-uuid'),
     debug = false,
     inputEncoding = null,
     outputEncoding = null;
@@ -17,16 +18,16 @@ exports.setOutputEncoding = function(enc) {
 }
 
 exports.convertHTMLString = function (html, pdfPath, callback) {
-    var self = this;
-    fs.writeFile('temp.html', html, function (err) {
+    var self = this, uniqueID = UUIDGenerator.v4();
+    fs.writeFile(uniqueID + '.html', html, function (err) {
         if (err) {
             callback(err)
         } else {
-            self.convertHTMLFile('temp.html', pdfPath, function (error, results) {
+            self.convertHTMLFile(uniqueID + '.html', pdfPath, function (error, results) {
                 if (error) {
                     callback(error);
                 } else {
-                    fs.unlink('temp.html', function (deleteError) {
+                    fs.unlink(uniqueID + '.html', function (deleteError) {
                         if (deleteError) {
                             callback(deleteError);
                         } else {

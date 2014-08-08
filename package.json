@@ -28,5 +28,8 @@
   "bugs": {
     "url": "https://github.com/ChaosEvoker/html-to-pdf/issues"
   },
-  "homepage": "https://github.com/ChaosEvoker/html-to-pdf"
+  "homepage": "https://github.com/ChaosEvoker/html-to-pdf",
+  "dependencies": {
+    "node-uuid": "^1.4.1"
+  }
 }
