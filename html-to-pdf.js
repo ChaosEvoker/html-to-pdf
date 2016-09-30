@@ -19,7 +19,8 @@ exports.setOutputEncoding = function (enc) {
 
 exports.convertHTMLString = function (html, pdfPath, getBase64, callback) {
     var self = this, uniqueID = UUIDGenerator.v4();
-
+    // If no pdfPath is specified, set it as a uuid. This is for getting only the base64 string
+    // and not caring about the file.
     pdfPath = pdfPath || uniqueID + '.pdf';
 
     fs.writeFile(uniqueID + '.html', html, function (err) {
@@ -60,6 +61,7 @@ var convertBase64 = function (pdfPath, callback) {
 }
 
 exports.convertHTMLFile = function (htmlPath, pdfPath, getBase64, callback) {
+    // Same as convertHTMLString
     pdfPath = pdfPath || UUIDGenerator.v4() + '.pdf';
 
     var args = ['-jar', __dirname + '/PDFRenderer.jar'];
