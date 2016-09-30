@@ -9,21 +9,24 @@ exports.setDebug = function (newDebug) {
     debug = newDebug;
 };
 
-exports.setInputEncoding = function(enc) {
+exports.setInputEncoding = function (enc) {
     inputEncoding = enc;
 }
 
-exports.setOutputEncoding = function(enc) {
+exports.setOutputEncoding = function (enc) {
     outputEncoding = enc;
 }
 
-exports.convertHTMLString = function (html, pdfPath, callback) {
+exports.convertHTMLString = function (html, pdfPath, getBase64, callback) {
     var self = this, uniqueID = UUIDGenerator.v4();
+
+    pdfPath = pdfPath || uniqueID + '.pdf';
+
     fs.writeFile(uniqueID + '.html', html, function (err) {
         if (err) {
-            callback(err)
+            callback(err);
         } else {
-            self.convertHTMLFile(uniqueID + '.html', pdfPath, function (error, results) {
+            self.convertHTMLFile(uniqueID + '.html', pdfPath, getBase64, function (error, results) {
                 if (error) {
                     callback(error);
                 } else {
@@ -40,7 +43,25 @@ exports.convertHTMLString = function (html, pdfPath, callback) {
     });
 };
 
-exports.convertHTMLFile = function (htmlPath, pdfPath, callback) {
+var convertBase64 = function (pdfPath, callback) {
+  fs.readFile(pdfPath, function (err, data) {
+    if (err) {
+      callback(err);
+    } else {
+      fs.unlink(pdfPath, function (deleteError) {
+        if (deleteError) {
+          callback(deleteError);
+        } else {
+          callback(null, data.toString('base64'));
+        }
+      });
+    }
+  })
+}
+
+exports.convertHTMLFile = function (htmlPath, pdfPath, getBase64, callback) {
+    pdfPath = pdfPath || UUIDGenerator.v4() + '.pdf';
+
     var args = ['-jar', __dirname + '/PDFRenderer.jar'];
     if (inputEncoding !== null) {
         args.push('--input-encoding', inputEncoding);
@@ -62,6 +83,18 @@ exports.convertHTMLFile = function (htmlPath, pdfPath, callback) {
         });
     }
     renderer.on('exit', function (code) {
-        callback(null, {process_code: code});
+        var result = {process_code: code}
+        if (getBase64) {
+          convertBase64(pdfPath, function (err, base64) {
+            if (err) {
+              callback(err);
+            } else {
+              result.base64 = base64;
+              callback(null, result);
+            }
+          });
+        } else {
+          callback(null, result);
+        }
     });
 };
