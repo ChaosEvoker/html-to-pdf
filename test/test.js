@@ -8,6 +8,8 @@ var htmlPath = path.join(__dirname, 'test.html');
 // htmlToPdf.setDebug(true);
 
 test('convertHTMLFile with base64', function (t) {
+  htmlToPdf.setBase64Output(true);
+  // second argument doesn't matter
   htmlToPdf.convertHTMLFile(htmlPath, null, function (err, result) {
     t.equal(result.process_code, 0, 'Exits with code 0');
     t.ok(typeof result.base64 === 'string', 'Returns a base64 property as a string');
@@ -16,6 +18,7 @@ test('convertHTMLFile with base64', function (t) {
 });
 
 test('convertHTMLFile without base64', function (t) {
+  htmlToPdf.setBase64Output(false);
   htmlToPdf.convertHTMLFile(htmlPath, 'output.pdf', function (err, result) {
     t.equal(result.process_code, 0, 'Exits with code 0');
     t.notOk(result.base64, 'No base64 property');
@@ -27,6 +30,7 @@ test('convertHTMLFile without base64', function (t) {
 });
 
 test('convertHTMLString with base64', function (t) {
+  htmlToPdf.setBase64Output(true);
   fs.readFile(htmlPath, function (err, string) {
     htmlToPdf.convertHTMLString(string, null, function (err, result) {
       t.equal(result.process_code, 0, 'Exits with code 0');
@@ -37,6 +41,7 @@ test('convertHTMLString with base64', function (t) {
 });
 
 test('convertHTMLString without base64', function (t) {
+  htmlToPdf.setBase64Output(false);
   fs.readFile(htmlPath, function (err, string) {
     htmlToPdf.convertHTMLString(string, 'output.pdf', function (err, result) {
       t.equal(result.process_code, 0, 'Exits with code 0');

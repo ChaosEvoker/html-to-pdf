@@ -4,6 +4,7 @@ var child_process = require('child_process'),
     debug = false,
     inputEncoding = null,
     outputEncoding = null;
+    getBase64 = false;
 
 exports.setDebug = function (newDebug) {
     debug = newDebug;
@@ -11,11 +12,15 @@ exports.setDebug = function (newDebug) {
 
 exports.setInputEncoding = function (enc) {
     inputEncoding = enc;
-}
+};
 
 exports.setOutputEncoding = function (enc) {
     outputEncoding = enc;
-}
+};
+
+exports.setBase64Output = function (bool) {
+    getBase64 = bool;
+};
 
 exports.convertHTMLString = function (html, pdfPath, callback) {
     var self = this, uniqueID = UUIDGenerator.v4();
@@ -42,27 +47,27 @@ exports.convertHTMLString = function (html, pdfPath, callback) {
 };
 
 var convertBase64 = function (pdfPath, callback) {
-  fs.readFile(pdfPath, function (err, data) {
-    if (err) {
-      callback(err);
-    } else {
-      fs.unlink(pdfPath, function (deleteError) {
-        if (deleteError) {
-          callback(deleteError);
+    fs.readFile(pdfPath, function (err, data) {
+        if (err) {
+            callback(err);
         } else {
-          callback(null, data.toString('base64'));
+            fs.unlink(pdfPath, function (deleteError) {
+                if (deleteError) {
+                    callback(deleteError);
+                } else {
+                    callback(null, data.toString('base64'));
+                }
+            });
         }
-      });
-    }
-  })
+    });
 }
 
 exports.convertHTMLFile = function (htmlPath, pdfPath, callback) {
-    // If no pdfPath is specified, set it as a uuid. This is for getting only the base64 string
-    // and not caring about the file.
-    var getBase64;
-    if (!pdfPath) getBase64 = true;
-    pdfPath = pdfPath || UUIDGenerator.v4() + '.pdf';
+    var pdfFileName = pdfPath;
+    
+    if (getBase64) {
+        pdfFileName = UUIDGenerator.v4() + '.pdf';
+    }
 
     var args = ['-jar', __dirname + '/PDFRenderer.jar'];
     if (inputEncoding !== null) {
@@ -71,7 +76,7 @@ exports.convertHTMLFile = function (htmlPath, pdfPath, callback) {
     if (outputEncoding !== null) {
         args.push('--output-encoding', outputEncoding);
     }
-    args.push(htmlPath, pdfPath);
+    args.push(htmlPath, pdfFileName);
     var renderer = child_process.spawn('java', args);
     renderer.on('error', function (error) {
         callback(error);
@@ -85,18 +90,18 @@ exports.convertHTMLFile = function (htmlPath, pdfPath, callback) {
         });
     }
     renderer.on('exit', function (code) {
-        var result = {process_code: code}
+        var result = {process_code: code};
         if (getBase64) {
-          convertBase64(pdfPath, function (err, base64) {
-            if (err) {
-              callback(err);
-            } else {
-              result.base64 = base64;
-              callback(null, result);
-            }
-          });
+            convertBase64(pdfFileName, function (err, base64) {
+                if (err) {
+                    callback(err);
+                } else {
+                    result.base64 = base64;
+                    callback(null, result);
+                }
+            });
         } else {
-          callback(null, result);
+            callback(null, result);
         }
     });
 };
