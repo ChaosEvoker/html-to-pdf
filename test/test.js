@@ -17,8 +17,7 @@ test('convertHTMLFileToBase64PDF', function (t) {
 
 test('convertHTMLFile', function (t) {
   htmlToPdf.convertHTMLFile(htmlPath, 'output.pdf', function (err, result) {
-    t.equal(result.process_code, 0, 'Exits with code 0');
-    t.notOk(result.base64, 'No base64 property');
+    t.deepEqual(result, {process_code: 0}, 'Exits with code 0');
     fs.unlink('output.pdf', function (err) {
       t.notOk(err, 'PDF removed correctly');
       t.end();
@@ -39,8 +38,7 @@ test('convertHTMLStringToBase64PDF', function (t) {
 test('convertHTMLString', function (t) {
   fs.readFile(htmlPath, function (err, string) {
     htmlToPdf.convertHTMLString(string, 'output.pdf', function (err, result) {
-      t.equal(result.process_code, 0, 'Exits with code 0');
-      t.notOk(result.base64, 'No base64 property');
+      t.deepEqual(result, {process_code: 0}, 'Exits with code 0');
       fs.unlink('output.pdf', function (err) {
         t.notOk(err, 'PDF removed correctly');
         t.end();
