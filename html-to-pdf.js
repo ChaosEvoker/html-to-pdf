@@ -4,7 +4,6 @@ var child_process = require('child_process'),
     debug = false,
     inputEncoding = null,
     outputEncoding = null;
-    getBase64 = false;
 
 exports.setDebug = function (newDebug) {
     debug = newDebug;
