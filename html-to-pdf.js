@@ -9,19 +9,74 @@ exports.setDebug = function (newDebug) {
     debug = newDebug;
 };
 
-exports.setInputEncoding = function(enc) {
+exports.setInputEncoding = function (enc) {
     inputEncoding = enc;
+};
+
+exports.setOutputEncoding = function (enc) {
+    outputEncoding = enc;
+};
+
+var convertBase64 = function (pdfPath, callback) {
+    fs.readFile(pdfPath, function (err, data) {
+        if (err) {
+            callback(err);
+        } else {
+            fs.unlink(pdfPath, function (deleteError) {
+                if (deleteError) {
+                    callback(deleteError);
+                } else {
+                    callback(null, data.toString('base64'));
+                }
+            });
+        }
+    });
 }
 
-exports.setOutputEncoding = function(enc) {
-    outputEncoding = enc;
-}
+exports.convertHTMLStringToBase64PDF = function (html, callback) {
+    var self = this, pdfFileName = UUIDGenerator.v4() + '.pdf';
+
+    self.convertHTMLString(html, pdfFileName, function (error, result) {
+        if (error) {
+            callback(error);
+        } else {
+            convertBase64(pdfFileName, function (err, base64) {
+                if (err) {
+                    callback(err);
+                } else {
+                    result.base64 = base64;
+                    callback(null, result);
+                }
+            });
+        }
+    });
+};
+
+exports.convertHTMLFileToBase64PDF = function (html, callback) {
+    var self = this, pdfFileName = UUIDGenerator.v4() + '.pdf';
+
+    self.convertHTMLFile(html, pdfFileName, function (error, result) {
+        if (error) {
+            callback(error);
+        } else {
+            convertBase64(pdfFileName, function (err, base64) {
+                if (err) {
+                    callback(err);
+                } else {
+                    result.base64 = base64;
+                    callback(null, result);
+                }
+            });
+        }
+    });
+};
 
 exports.convertHTMLString = function (html, pdfPath, callback) {
     var self = this, uniqueID = UUIDGenerator.v4();
+
     fs.writeFile(uniqueID + '.html', html, function (err) {
         if (err) {
-            callback(err)
+            callback(err);
         } else {
             self.convertHTMLFile(uniqueID + '.html', pdfPath, function (error, results) {
                 if (error) {
